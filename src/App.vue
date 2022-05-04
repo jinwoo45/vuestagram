@@ -1,15 +1,16 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li @click="step--">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step == 1" @click="step++">Next</li>
+      <li v-if="step == 2" @click="publish">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :게시물="게시물" :step="step" />
+  <Container :이미지="이미지" :게시물="게시물" :step="step" />
 
   <button @click="more">더보기</button>
 
@@ -41,6 +42,7 @@ export default {
       게시물: postdata,
       더보기: 0,
       step: 0,
+      이미지: "",
     };
   },
   components: {
@@ -67,6 +69,7 @@ export default {
       console.log(파일[0].type);
       let url = URL.createObjectURL(파일[0]);
       console.log(url);
+      this.이미지 = url;
       this.step++;
     },
   },

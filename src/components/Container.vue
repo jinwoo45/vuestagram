@@ -1,13 +1,16 @@
 <template>
   <div>
+    <!-- 게시물페이지 -->
     <div v-if="step == 0">
-      <!-- 게시물페이지 -->
       <Post :게시물="게시물[i]" v-for="(a, i) in 게시물" :key="i" />
     </div>
 
+    <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <!-- 필터선택페이지 -->
-      <div class="upload-image"></div>
+      <div
+        class="upload-image"
+        :style="`background-image:url(${이미지})`"
+      ></div>
       <div class="filters">
         <div class="filter-1"></div>
         <div class="filter-1"></div>
@@ -17,9 +20,12 @@
       </div>
     </div>
 
+    <!-- 글작성페이지 -->
     <div v-if="step == 2">
-      <!-- 글작성페이지 -->
-      <div class="upload-image"></div>
+      <div
+        class="upload-image"
+        :style="`background-image:url(${이미지})`"
+      ></div>
       <div class="write">
         <textarea class="write-box">write!</textarea>
       </div>
@@ -36,6 +42,7 @@ export default {
   props: {
     게시물: Array,
     step: Number,
+    이미지: String,
   },
 };
 </script>
