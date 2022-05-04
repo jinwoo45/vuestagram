@@ -10,7 +10,12 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :이미지="이미지" :게시물="게시물" :step="step" />
+  <Container
+    @write="작성한글 = $event"
+    :이미지="이미지"
+    :게시물="게시물"
+    :step="step"
+  />
 
   <button @click="more">더보기</button>
 
@@ -43,12 +48,27 @@ export default {
       더보기: 0,
       step: 0,
       이미지: "",
+      작성한글: "",
     };
   },
   components: {
     Container: Container,
   },
   methods: {
+    publish() {
+      var 내게시물 = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.이미지,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.작성한글,
+        filter: "perpetua",
+      };
+      this.게시물.unshift(내게시물);
+      this.step = 0;
+    },
     more() {
       axios
         .post("URL", { name: "kim" })
