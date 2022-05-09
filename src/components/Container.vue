@@ -8,21 +8,26 @@
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
       <div
+        :class="선택한필터"
         class="upload-image"
         :style="`background-image:url(${이미지})`"
       ></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+          v-for="필터 in 필터들"
+          :key="필터"
+          :필터="필터"
+          :이미지="이미지"
+        >
+          <template v-slot:a>{{ 필터 }}</template>
+        </FilterBox>
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
       <div
+        :class="선택한필터"
         class="upload-image"
         :style="`background-image:url(${이미지})`"
       ></div>
@@ -31,7 +36,7 @@
           @input="$emit('write', $event.target.value)"
           class="write-box"
         >
-write!</textarea
+문구 입력...</textarea
         >
       </div>
     </div>
@@ -40,9 +45,49 @@ write!</textarea
 
 <script>
 import Post from "./Post.vue";
+import FilterBox from "./FilterBox.vue";
 export default {
+  data() {
+    return {
+      필터들: [
+        "aden",
+        "_1977",
+        "brannan",
+        "brooklyn",
+        "clarendon",
+        "earlybird",
+        "gingham",
+        "hudson",
+        "inkwell",
+        "kelvin",
+        "lark",
+        "lofi",
+        "maven",
+        "mayfair",
+        "moon",
+        "nashville",
+        "perpetua",
+        "reyes",
+        "rise",
+        "slumber",
+        "stinson",
+        "toaster",
+        "valencia",
+        "walden",
+        "willow",
+        "xpro2",
+      ],
+      선택한필터: "",
+    };
+  },
+  mounted() {
+    this.emitter.on("박스클릭함", (a) => {
+      this.선택한필터 = a;
+    });
+  },
   components: {
     Post: Post,
+    FilterBox: FilterBox,
   },
   props: {
     게시물: Array,

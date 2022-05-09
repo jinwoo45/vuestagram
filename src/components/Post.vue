@@ -6,6 +6,7 @@
     </div>
     <div
       class="post-body"
+      :class="게시물.filter"
       :style="{ backgroundImage: `url(${게시물.postImage})` }"
     ></div>
     <div class="post-content">
@@ -20,6 +21,7 @@
 
 <script>
 export default {
+  data() {},
   props: {
     게시물: Object,
   },
