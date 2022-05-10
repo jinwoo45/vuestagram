@@ -7,7 +7,7 @@
       <li v-if="step == 1" @click="step++">Next</li>
       <li v-if="step == 2" @click="publish">발행</li>
     </ul>
-    <img src="./assets/logo.png" class="logo" />
+    <img src="./assets/jinstagram.png" class="logo" />
   </div>
 
   <Container
@@ -113,7 +113,7 @@ ul {
   list-style-type: none;
 }
 .logo {
-  width: 22px;
+  height: 30px;
   margin: auto;
   display: block;
   position: absolute;
