@@ -3,6 +3,22 @@
     <!-- 게시물페이지 -->
     <div v-if="step == 0">
       <Post :게시물="게시물[i]" v-for="(a, i) in 게시물" :key="i" />
+
+      <!-- <button @click="more">더보기</button> -->
+
+      <div class="footer">
+        <ul class="footer-button-plus">
+          <input
+            @change="upload"
+            multiple
+            accept="image/*"
+            type="file"
+            id="file"
+            class="inputfile"
+          />
+          <label for="file" class="input-plus">+</label>
+        </ul>
+      </div>
     </div>
 
     <!-- 필터선택페이지 -->

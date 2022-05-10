@@ -20,7 +20,7 @@
     :게시물="게시물"
     :step="step"
   />
-
+  <!-- 
   <button @click="more">더보기</button>
 
   <div class="footer">
@@ -35,7 +35,7 @@
       />
       <label for="file" class="input-plus">+</label>
     </ul>
-  </div>
+  </div> -->
 </template>
 
 <script>
