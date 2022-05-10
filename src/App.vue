@@ -1,5 +1,9 @@
 <template>
   <div class="header">
+    <!-- <h4>안녕 {{ $store.state.age }}</h4>
+    <button @click="$store.commit('숫자변경', 10)">변경</button> -->
+    <!-- <p>{{ $store.state.more }}</p> -->
+    <!-- <button @click="$store.dispatch('getData')">더보기</button> -->
     <ul class="header-button-left">
       <li @click="step--">Cancel</li>
     </ul>
