@@ -63,7 +63,7 @@ export default {
   methods: {
     publish() {
       var 내게시물 = {
-        name: "Kim Hyun",
+        name: "xx_jwoo",
         userImage: "https://placeimg.com/100/100/arch",
         postImage: this.이미지,
         likes: 36,
