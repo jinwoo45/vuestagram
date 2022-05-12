@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <!-- <h4>안녕 {{ $store.state.age }}</h4>
-    <button @click="$store.commit('숫자변경', 10)">변경</button> -->
+    <!-- <h4>안녕 {{ $store.state.age[0] }}</h4> -->
+    <!-- <button @click="$store.commit('숫자변경', 10)">변경</button> -->
     <!-- <p>{{ $store.state.more }}</p> -->
     <!-- <button @click="$store.dispatch('getData')">더보기</button> -->
     <ul class="header-button-left">
@@ -22,8 +22,8 @@
   />
   <!-- 
   <button @click="more">더보기</button>
-
-  <div class="footer">
+-->
+  <div v-if="step == 0" class="footer">
     <ul class="footer-button-plus">
       <input
         @change="upload"
@@ -35,13 +35,14 @@
       />
       <label for="file" class="input-plus">+</label>
     </ul>
-  </div> -->
+  </div>
 </template>
 
 <script>
 import Container from "./components/Container.vue";
 import postdata from "./assets/postdata.js";
 import axios from "axios";
+import { mapMutations, mapState } from "vuex";
 axios.post();
 
 export default {
@@ -64,7 +65,22 @@ export default {
   components: {
     Container: Container,
   },
+  computed: {
+    //계산결과저장용 함수들임
+    name() {
+      return this.$store.state.name;
+    },
+    age() {
+      return this.$store.state.age;
+    },
+    // ...mapState(["name", "age", "likes"]),
+    ...mapState({ 내이름: "name" }),
+  },
   methods: {
+    ...mapMutations(["setMore", "좋아요"]),
+    now() {
+      return new Date();
+    },
     publish() {
       var 내게시물 = {
         name: "xx_jwoo",
@@ -132,6 +148,7 @@ ul {
   padding-bottom: 8px;
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 .header-button-left {
   color: skyblue;

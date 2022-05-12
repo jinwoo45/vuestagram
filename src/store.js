@@ -5,8 +5,8 @@ const store = createStore({
   state() {
     return {
       name: "kim",
-      age: 20,
-      likes: 0,
+      age: [20, 20, 20],
+      likes: [20, 0, 0],
       좋아요눌렀니: false,
       more: {},
     };
@@ -21,12 +21,13 @@ const store = createStore({
     숫자변경(state, payload) {
       state.age += payload;
     },
-    좋아요(state) {
+    좋아요(state, i) {
+      console.log(i);
       if (state.좋아요눌렀니 == false) {
-        state.likes++;
+        state.likes[i]++;
         state.좋아요눌렀니 = true;
       } else {
-        state.likes--;
+        state.likes[i]--;
         state.좋아요눌렀니 = false;
       }
     },

@@ -1,22 +1,25 @@
 <template>
   <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
+      <div
+        class="profile"
+        :style="{ backgroundImage: `url(${게시물.userImage})` }"
+      ></div>
       <span class="profile-name">{{ 게시물.name }}</span>
     </div>
     <div
-      @click="$store.commit('좋아요')"
+      @click="$store.commit('좋아요', i)"
       class="post-body"
       :class="게시물.filter"
       :style="{ backgroundImage: `url(${게시물.postImage})` }"
     ></div>
     <div class="post-content">
       <!-- <p>{{ 게시물.likes }} Likes</p> -->
-      <p>{{ $store.state.likes }} Likes</p>
+      <p>{{ $store.state.likes[i] }} Likes</p>
       <p>
         <strong>{{ 게시물.name }} </strong>{{ 게시물.content }}
       </p>
-      <p class="date">May 15</p>
+      <p class="date">{{ 게시물.date }}</p>
     </div>
   </div>
 </template>
@@ -26,6 +29,7 @@ export default {
   data() {},
   props: {
     게시물: Object,
+    i: Number,
   },
 };
 </script>
@@ -35,7 +39,7 @@ export default {
   width: 100%;
 }
 .profile {
-  background-image: url("https://placeimg.com/100/100/arch");
+  /* background-image: url("https://placeimg.com/100/100/arch"); */
   width: 30px;
   height: 30px;
   background-size: 100%;
