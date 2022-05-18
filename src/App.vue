@@ -10,7 +10,7 @@
     <ul class="header-button-right">
       <li v-if="step == 1" @click="step++">Next</li>
       <li v-if="step == 2" @click="publish">발행</li>
-      <li v-if="step == 0" @click="step = 3">MyPage</li>
+      <li v-if="step == 0" @click="step = 3">Followers</li>
     </ul>
     <img src="./assets/jinstagram.png" class="logo" />
   </div>
@@ -167,7 +167,7 @@ ul {
 .header-button-right {
   color: skyblue;
   float: right;
-  width: 50px;
+  width: 74px;
   cursor: pointer;
   margin-top: 10px;
 }
