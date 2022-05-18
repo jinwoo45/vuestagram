@@ -214,7 +214,7 @@ ul {
 }
 #app {
   box-sizing: border-box;
-  font-family: "consolas";
+  font-family: sans-serif;
   margin-top: 60px;
   width: 100%;
   max-width: 460px;
